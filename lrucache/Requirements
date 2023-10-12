@@ -1,0 +1,12 @@
+Requirements:-
+1. Should have add, get, remove functionalities
+2. Should be scalable, can be extended to other cache types
+
+
+Entities
+DoublyLinkedListNode
+DoublyLinkedList
+EvictionPolicy
+Storage
+Cache
+CacheFactory
