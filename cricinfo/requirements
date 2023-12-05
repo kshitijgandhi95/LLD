@@ -1,0 +1,231 @@
+We will focus on the following set of requirements while designing Cricinfo:
+
+The system should keep track of all cricket-playing teams and their matches.
+
+The system should show live ball-by-ball commentary of cricket matches. - think about it
+
+All international cricket rules should be followed.
+
+Any team playing a tournament will announce a squad (a set of players) for the tournament.
+
+For each match, both teams will announce their playing-eleven from the tournament squad.
+
+The system should be able to record stats about players, matches, and tournaments.
+
+The system should be able to answer global stats queries like, “Who is the highest wicket taker of all time?”, “Who has scored maximum numbers of 100s in test matches?”, etc.
+
+The system should keep track of all ODI, Test and T20 matches.
+
+Cricbuzz.com -> List of matches
+                List of tournaments
+                List of Teams
+                Stats
+                History
+                Match Scoreboard
+                Match Commentary
+
+User Flow
+
+ObserverPatternForStats
+ObserverPatternForCommentary
+
+MatchFactory
+TournamentFactory
+StatsChainOfResponsibility
+
+
+MatchController
+    think of data structure
+    getUpcomingMatches()
+    getLiveMatches()
+    getPreviousMatches()
+    getMatchByMatchId()
+
+TournamentController
+    think of data structure
+    getUpcomingTournaments()
+    getLiveTournaments()
+    getPreviousTournaments()
+    getTournamentByTournamentId()
+
+PlayerController
+    think of data structure
+    getListOfPlayers()
+    getPlayersByTeamId()
+    getPlayerById()
+
+TeamController
+    think of data structure
+    getListOfTeams()
+    getTeamById()
+
+Stats<Interface>
+    mostWickets()
+    mostRuns()
+    mostCenturies()
+    bestStrikeRate()
+    bestEconomyRate()
+
+MatchStats inplements Stats
+    MatchId
+TournamentStats inplements Stats
+    TournamentId
+
+OverallStats <interface>
+TestOverallStats
+OneDayOverallStats
+T20OverallStats
+
+Entities
+Team
+Match
+Rules
+Tournament
+TournamentSquad
+MatchSquad
+Stats
+Search/Queries
+Result
+
+
+APIs
+    /tournaments
+    /matches
+    /teams
+    /stats/queryParams
+    /scorecard
+
+PlayerType<Enum> - done
+    Batsman
+    Bowler
+    Allrounder
+    Wicketkeeper
+
+Player - done
+    PlayerId
+    Team
+    Name
+    Dob
+    PlayerType
+
+TeamType<Enum> - done
+    National
+    League
+    Domestic
+
+TeamSquad
+    Format
+    List<Players>
+
+Team - done
+    TeamId
+    List<Players>
+    TeamName
+    TeamType
+    List<TeamSquad>
+
+TournamentSquad - done
+    tournamentId
+    TournamentPlayers<List>
+
+MatchSquad - done
+    matchId
+    Players<List>
+
+Tournament - done
+    TournamentId
+    TournamentSquad
+    List<Teams>
+    WinnerTeam
+    Status
+    List<Matches>
+    StartTime
+    EndTime
+
+Rules<Interface> - done
+    getBattingRules()
+    getBowlingRules()
+    getFieldingRules()
+    getPowerplayRules()
+
+BattingRules - done
+    List<String>
+BowlingRules
+    List<String>
+FieldingRules
+    List<String>
+PowerplayRules
+    List<String>
+
+T20Rules - done
+OneDayRules
+TestRules
+    
+Scorecard - done
+    List<Innings>
+
+Innings - done
+    BattingScorecard
+    BowlingScorecard
+
+BattingScorecard - done
+    List<BattingInfo>
+    Extras
+
+BowlingScorecard - done
+    List<BowlingInfo>
+    OversCount
+
+BattingInfo - done
+    PlayerId
+    Runs
+    Balls
+    4s
+    6s
+    Status
+    StatusRemark
+
+BowlingInfo - done
+    PlayerId
+    Overs
+    wickets
+    Wide
+    no-balls
+
+Extras - done
+    List<ExtraTypes>
+
+ExtraTypes<Enum> - done
+    NO-BALL
+    WIDE-BALL
+    LEG-BYES
+    BYES
+
+Commentary
+    SortedMap<Ball, String> (reverseSorted)
+
+
+Match /*<Interface> -> OneDay, Test, T20*/ - done
+    MatchId
+    List<Teams>
+    List<MatchSquads>
+    Rules<Interface>
+    Scorecard
+    MatchStatus
+    WinnerTeam
+    TournamentId
+    Commentary
+    StartTime
+    EndTime
+    Format
+    TossWon
+
+Status<Enum> - done
+ToBePlayed
+Ongoing
+FINISHED
+
+Format<Enum> - done
+OneDay
+T20
+Test
