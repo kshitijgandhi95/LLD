@@ -11,7 +11,7 @@ public class OneDayRules implements Rule{
     private BowlingRules bowlingRules;
     private PowerPlayRules powerPlayRules;
 
-    OneDayRules (BattingRules battingRules, BowlingRules bowlingRules, PowerPlayRules powerPlayRules) {
+    public OneDayRules (BattingRules battingRules, BowlingRules bowlingRules, PowerPlayRules powerPlayRules) {
         this.battingRules = battingRules;
         this.bowlingRules = bowlingRules;
         this.powerPlayRules = powerPlayRules;

@@ -5,7 +5,7 @@ import java.util.Set;
 public class BattingRules implements BattingRulesInterface{
     Set<String> rules;
 
-    BattingRules (Set<String> rules) {
+    public BattingRules (Set<String> rules) {
         this.rules = rules;
     }
 

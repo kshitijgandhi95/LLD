@@ -15,7 +15,7 @@ public class Team {
     private TeamType teamType;
     private CountryType countryType;
 
-    Team (String name, TeamType teamType, CountryType countryType) {
+    public Team (String name, TeamType teamType, CountryType countryType) {
         this.teamId = UUID.randomUUID();
         this.teamType = teamType;
         this.countryType = countryType;
@@ -28,6 +28,10 @@ public class Team {
         }
         this.players.add (p);
         return;
+    }
+
+    public CountryType getCountryType() {
+        return this.countryType;
     }
 
     //remove player

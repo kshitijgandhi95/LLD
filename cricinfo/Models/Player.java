@@ -2,7 +2,8 @@ package cricinfo.Models;
 
 import java.util.UUID;
 
-import LowLevelDesign.LLDCricbuzz.Team.Player.PlayerType;
+import cricinfo.Enums.PlayerType;
+
 
 public class Player {
     private UUID playerId;
@@ -11,7 +12,7 @@ public class Player {
     private long dob;
     private PlayerType playerType;
 
-    Player (Team team, String name, long dob, PlayerType playerType) {
+    public Player (Team team, String name, long dob, PlayerType playerType) {
         this.playerId = UUID.randomUUID();
         this.name = name;
         this.dob = dob;

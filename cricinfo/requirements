@@ -113,9 +113,9 @@ TeamType<Enum> - done
     League
     Domestic
 
-TeamSquad
+<!-- TeamSquad
     Format
-    List<Players>
+    List<Players> -->
 
 Team - done
     TeamId

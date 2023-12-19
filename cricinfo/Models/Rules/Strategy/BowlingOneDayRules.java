@@ -6,7 +6,7 @@ import java.util.Set;
 public class BowlingOneDayRules implements BowlingRules{
     Set<String> rules;
 
-    BowlingOneDayRules (Set<String> rules) {
+    public BowlingOneDayRules (Set<String> rules) {
         this.rules = rules;
     }
 
